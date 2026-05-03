@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-electron/
+release/
+
+# Java sidecar build artifacts
+java-sidecar/out/
+java-sidecar/VoidSidecar.jar
+
+# macOS
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
