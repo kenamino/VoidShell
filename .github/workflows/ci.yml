@@ -8,41 +8,13 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [macos-latest]
-        node-version: [18, 20]
-
-    runs-on: ${{ matrix.os }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Vite
-        run: npm run build:vite
-
-  release:
-    needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: macos-latest
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -51,15 +23,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build for macOS
-        run: npm run build:mac
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: |
-            release/*.zip
-          draft: true
-          generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Vite
+        run: npm run build:vite
