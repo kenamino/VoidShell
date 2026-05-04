@@ -17,7 +17,6 @@
 
 ![VoidShell Preview](./assets/preview.gif)
 
-*↑ 替换为实际运行截图或 GIF 演示*
 
 ---
 
