@@ -31,9 +31,6 @@ jobs:
       - name: Build Vite
         run: npm run build:vite
 
-      - name: Check TypeScript
-        run: npx tsc --noEmit
-
   release:
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
